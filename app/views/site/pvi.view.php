@@ -5,14 +5,14 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Banco de Dados</title>
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-    <link rel="stylesheet" href="/app/home/index.css">
-    <link rel="stylesheet" href="/app/pvi/index.css">
+    <link rel="stylesheet" href="/app/views/site/home.css">
+    <link rel="stylesheet" href="/app/views/site/pvi.css">
 </head>
 <body>
     <div class="back">
         <h1 class="titulo">Aluno Bernardo Rigolon</h1>
         <div style="width: 80%; display: flex; justify-content: start; padding-bottom: 2%;">
-        <h2><a href="/app/home/index.html" style="text-decoration: none; color: white; display: flex;" class="material-icons">arrow_back</a></h2>
+        <h2><a href="/app/views/site/index.view.php" style="text-decoration: none; color: white; display: flex;" class="material-icons">arrow_back</a></h2>
         </div>
             <div class="caixona">
                 <form class="box" method="POST" action="" style="flex-direction: column; padding: 20px;">

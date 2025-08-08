@@ -1,26 +1,44 @@
 <!DOCTYPE html>
-<html>
+<html lang="br">
 <head>
     <meta charset="UTF-8">
-    <title>My Simple Page</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link rel="stylesheet" href="/app/views/site/home.css">
 </head>
 <body>
-    <header>
-        <h1>Welcome to My Simple Page</h1>
-    </header>
-    <nav>
-        <ul>
-            <li><a href="#">Home</a></li>
-            <li><a href="#">About</a></li>
-            <li><a href="#">Contact</a></li>
-        </ul>
-    </nav>
-    <main>
-        <h2>About Us</h2>
-        <p>This is a simple HTML page.</p>
-    </main>
-    <footer>
-        <p>&copy; 2023 My Simple Page</p>
-    </footer>
+    <div class="back">
+        <h1 class="titulo">Gerenciamento de Alunos</h1>
+        <div class="caixona">
+        <div style="display: flex;">
+        <input class="pesquisa" placeholder="Pesquisar"/><button style="text-decoration: none; color: black; cursor: pointer;" class="material-icons">search</button>
+        </div>
+        <div class="box">
+            <table class="table">
+                <thead>
+                    <tr class="th">
+                        <th>ID</th>
+                        <th>Nome</th>
+                        <th>Objetivo</th>
+                        <th>ID Ficha</th>
+                        <th>ID Dieta</th>
+                        <th>Gerenciar</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr class="tb">
+                        <td>1</td>
+                        <td>Bernardo Rigolon</td>
+                        <td>Musculação</td>
+                        <td>1</td>
+                        <td>1</td>
+                        <td><a href="/app/views/site/pvi.view.php" style="text-decoration: none; color: black;" class="material-icons">settings</a></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        </div>
+    </div>
 </body>
 </html>
