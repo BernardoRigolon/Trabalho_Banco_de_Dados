@@ -8,6 +8,7 @@
     <link rel="stylesheet" href="/app/home/index.css">
 </head>
 <body>
+    <?php echo 'oi'; ?>
     <div class="back">
         <h1 class="titulo">Gerenciamento de Alunos</h1>
         <div class="caixona">
