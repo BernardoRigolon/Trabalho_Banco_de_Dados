@@ -10,7 +10,7 @@
 <body>
     <div class="back">
         <div style="width: 100%; display: flex; justify-content: center; gap:2%; margin-top:50px;">
-            <button type="submit" style="background-color: yellow; padding: 15px; cursor: pointer; font-size:30px;"><a href="/app/views/site/index.view.php" style="text-decoration: none; color: black;">Alunos</a></button>
+            <button type="submit" style="background-color: yellow; padding: 15px; cursor: pointer; font-size:30px;"><a href="/" style="text-decoration: none; color: black;">Alunos</a></button>
             <button style="background-color: red; padding: 15px; cursor: pointer; font-size:30px;"><a href="/app/views/site/ficha.view.php" style="text-decoration: none; color: black;">Fichas</a></button>
         </div>
         <h1 class="titulo">Gerenciamento de Fichas</h1>
