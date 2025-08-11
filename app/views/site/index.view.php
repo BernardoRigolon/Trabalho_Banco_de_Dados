@@ -26,20 +26,22 @@
                         <th>ID Aluno</th>
                         <th>Nome</th>
                         <th>Objetivo</th>
-                        <th>ID Ficha</th>
+                        <th>Criar Ficha</th>   <!--Ai leva para aquela página de gerenciamento de ficha, e não ter o id dela porque quem guarda é a ficha e não o aluno-->
                         <th>ID Dieta</th>
                         <th>Gerenciar</th>
                     </tr>
                 </thead>
                 <tbody>
+                    <?php foreach ($alunos as $aluno): ?>
                     <tr class="tb">
-                        <td>1</td>
-                        <td>Bernardo Rigolon</td>
-                        <td>Musculação</td>
-                        <td>1</td>
+                        <td> <?php echo $aluno->id; ?></td>
+                        <td><?php echo $aluno->user_nome; ?></td>
+                        <td><?php echo $aluno->objetivo; ?></td>
+                        <td>Icon</td>
                         <td>1</td>
                         <td><a href="/app/views/site/pvi.view.php" style="text-decoration: none; color: black;" class="material-icons">settings</a></td>
                     </tr>
+                    <?php endforeach; ?>
                 </tbody>
             </table>
         </div>
@@ -47,3 +49,8 @@
     </div>
 </body>
 </html>
+
+<script>
+  const alunos = <?php echo json_encode($alunos); ?>;
+  console.log(alunos);
+</script>
