@@ -12,7 +12,7 @@
     <div class="back">
         <h1 class="titulo">Aluno Bernardo Rigolon</h1>
         <div style="width: 80%; display: flex; justify-content: start; padding-bottom: 2%;">
-        <h2><a href="/app/views/site/index.view.php" style="text-decoration: none; color: white; display: flex;" class="material-icons">arrow_back</a></h2>
+        <h2><a href="/" style="text-decoration: none; color: white; display: flex;" class="material-icons">arrow_back</a></h2>
         </div>
             <div class="caixona">
                 <form class="box" method="POST" action="" style="flex-direction: column; padding: 20px;">

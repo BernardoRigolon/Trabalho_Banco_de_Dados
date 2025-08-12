@@ -15,4 +15,22 @@ class AlunosController
         // Retorna a view passando os dados
         return view('site/index', compact('alunos'));
     }
+
+    public function criarAluno() {
+    $usuarioId = App::get('database')->criarUsuario([
+        'nome'=> $_POST['nome'],
+        'cpf' => $_POST['cpf'],
+        'email'=> $_POST['email'],
+        'senha'=> $_POST['senha'], 
+        'telefone' => $_POST['telefone']
+    ]);
+
+    App::get('database')->criarAluno($usuarioId, $_POST['objetivo']);
+
+    header("Location: /");
+    }
+
+    public function formAdicionarAluno() {
+        return view('site/criarAluno');
+    }
 }

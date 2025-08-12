@@ -18,7 +18,7 @@
         <div class="caixona">
         <div style="display: flex; width: 100%; justify-content:space-between; padding-bottom:2%">
         <div style="width: 30%; align-items:center; display:flex;"><input class="pesquisa" placeholder="Pesquisar"/><button style="text-decoration: none; color: black; cursor: pointer;" class="material-icons">search</button></div>
-        <button type="submit" style="background-color: yellow; padding: 10px; cursor: pointer; font-size:20px; justify-self:end; display: flex;"><a href="/app/views/site/index.view.php" style="text-decoration: none; color: black;">Criar Aluno</a></button>
+        <button type="submit" style="background-color: yellow; padding: 10px; cursor: pointer; font-size:20px; justify-self:end; display: flex;"><a href="/adicionarAluno" style="text-decoration: none; color: black;">Criar Aluno</a></button>
         </div>
         <div class="box">
             <table class="table">
@@ -38,7 +38,15 @@
                         <td> <?php echo $aluno->id; ?></td>
                         <td><?php echo $aluno->user_nome; ?></td>
                         <td><?php echo $aluno->objetivo; ?></td>
-                        <td><a href="/fichaIndividual?id=<?= $aluno->id_ficha ?>" style="text-decoration: none; color: black;" class="material-symbols-outlined">visibility</a></td>
+                        <td>
+                            <?php if ($aluno->id_ficha === null): ?>
+                                <span class="material-symbols-outlined" style="color: gray; cursor: not-allowed;">visibility</span>
+                            <?php else: ?>
+                                <a href="/fichaIndividual?id=<?= $aluno->id_ficha ?>" 
+                                style="text-decoration: none; color: black;" 
+                                class="material-symbols-outlined">visibility</a>
+                            <?php endif; ?>
+                        </td>
                         <td>1</td>
                         <td><a href="/app/views/site/pvi.view.php" style="text-decoration: none; color: black;" class="material-icons">settings</a></td>
                     </tr>

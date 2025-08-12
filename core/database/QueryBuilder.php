@@ -97,4 +97,35 @@ class QueryBuilder
             die($e->getMessage());
         }
     }
+
+   public function criarUsuario($parametros) {
+        $sql = "INSERT INTO Usuario (nome, cpf, email, senha, telefone) 
+                VALUES (:nome, :cpf, :email, :senha, :telefone)";
+
+        try {
+            $stmt = $this->pdo->prepare($sql);
+            $stmt->execute($parametros);
+
+            // retorna o id do usuário criado
+            return $this->pdo->lastInsertId();
+
+        } catch (Exception $e) {
+            die($e->getMessage());
+        }
+    }
+
+    public function criarAluno($idUsuario, $objetivo) {
+        $sql = "INSERT INTO Aluno (id, objetivo) VALUES (:id, :objetivo)";
+
+        try {
+            $stmt = $this->pdo->prepare($sql);
+            $stmt->execute([
+                'id' => $idUsuario,
+                'objetivo' => $objetivo
+            ]);
+        } catch (Exception $e) {
+            die($e->getMessage());
+        }
+    }
+
 }
