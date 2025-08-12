@@ -48,7 +48,7 @@
                             <?php endif; ?>
                         </td>
                         <td>1</td>
-                        <td><a href="/app/views/site/pvi.view.php" style="text-decoration: none; color: black;" class="material-icons">settings</a></td>
+                        <td><a href="/editarAluno?id=<?=$aluno->id?>" style="text-decoration: none; color: black;" class="material-icons">settings</a></td>
                     </tr>
                     <?php endforeach; ?>
                 </tbody>

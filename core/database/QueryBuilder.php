@@ -128,4 +128,60 @@ class QueryBuilder
         }
     }
 
+  public function editarUsuario($parametros, $id) {
+        $sql = "UPDATE Usuario 
+                SET nome = :nome, 
+                    cpf = :cpf, 
+                    email = :email, 
+                    senha = :senha, 
+                    telefone = :telefone
+                WHERE id_usuario = :id";
+
+        try {
+            $stmt = $this->pdo->prepare($sql);
+            $parametros['id'] = $id;
+            $stmt->execute($parametros);
+
+            // Para UPDATE não há ID novo, então só retorna true/false
+            return $stmt->rowCount(); // número de linhas alteradas
+        } catch (Exception $e) {
+            die($e->getMessage());
+        }
+    }
+
+    public function editarAluno($idUsuario, $objetivo) {
+        $sql = "UPDATE Aluno 
+                SET objetivo = :objetivo
+                WHERE id = :id";
+
+        try {
+            $stmt = $this->pdo->prepare($sql);
+            $stmt->execute([
+                'id' => $idUsuario,
+                'objetivo' => $objetivo
+            ]);
+
+            return $stmt->rowCount();
+        } catch (Exception $e) {
+            die($e->getMessage());
+        }
+    }
+
+    public function buscarAlunoPorId($id)
+    {
+        $sql = "SELECT u.id_usuario, u.nome, u.cpf, u.email, u.telefone,
+                    a.objetivo
+                FROM Usuario u
+                INNER JOIN Aluno a ON u.id_usuario = a.id
+                WHERE u.id_usuario = :id";
+
+        try {
+            $stmt = $this->pdo->prepare($sql);
+            $stmt->execute(['id' => $id]);
+            return $stmt->fetch(PDO::FETCH_ASSOC); // Retorna um array associativo
+        } catch (Exception $e) {
+            die("Erro ao buscar aluno: " . $e->getMessage());
+        }
+    }
+
 }
