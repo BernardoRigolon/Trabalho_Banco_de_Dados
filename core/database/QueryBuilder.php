@@ -184,4 +184,21 @@ class QueryBuilder
         }
     }
 
+    public function excluirUsuario($id)
+    {
+        try {
+            // Excluir dados dependentes primeiro (exemplo: aluno)
+            $sqlAluno = "DELETE FROM Aluno WHERE id = :id";
+            $stmtAluno = $this->pdo->prepare($sqlAluno);
+            $stmtAluno->execute(['id' => $id]);
+
+            // Depois excluir usuário
+            $sqlUsuario = "DELETE FROM Usuario WHERE id_usuario = :id";
+            $stmtUsuario = $this->pdo->prepare($sqlUsuario);
+            $stmtUsuario->execute(['id' => $id]);
+        } catch (Exception $e) {
+            throw new Exception("Erro ao excluir usuário: " . $e->getMessage());
+        }
+    }
+
 }

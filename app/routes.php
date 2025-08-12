@@ -11,3 +11,4 @@ $router->get('adicionarAluno', 'AlunosController@formAdicionarAluno');
 $router->get('editarAluno', 'AlunosController@formEditarAluno');
 $router->post('editarAluno', 'AlunosController@editarAluno');
 $router->post('adicionarAluno', 'AlunosController@criarAluno');
+$router->post('excluirAluno', 'AlunosController@excluirAluno');

@@ -71,4 +71,24 @@ class AlunosController
         }
     }
 
+    public function excluirAluno()
+    {
+        try {
+            $id = $_POST['id_usuario'] ?? null;
+
+            if (!$id) {
+                throw new Exception("ID do usuário não fornecido.");
+            }
+
+            // Chama o método do banco para deletar usuário e dados relacionados (se houver)
+            App::get('database')->excluirUsuario($id);
+
+            header("Location: /");
+            exit;
+        } catch (Exception $e) {
+            die("Erro ao excluir usuário: " . $e->getMessage());
+        }
+    }
+
+
 }

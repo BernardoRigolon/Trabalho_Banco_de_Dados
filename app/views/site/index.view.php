@@ -30,6 +30,7 @@
                         <th>Visualizar Ficha</th>   <!--Ai leva para aquela página de gerenciamento de ficha, e não ter o id dela porque quem guarda é a ficha e não o aluno-->
                         <th>ID Dieta</th>
                         <th>Gerenciar</th>
+                        <th>Excluir</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -49,6 +50,14 @@
                         </td>
                         <td>1</td>
                         <td><a href="/editarAluno?id=<?=$aluno->id?>" style="text-decoration: none; color: black;" class="material-icons">settings</a></td>
+                        <td>
+                            <form method="POST" action="/excluirAluno" onsubmit="return confirm('Tem certeza que deseja excluir este aluno?');">
+                                <input type="hidden" name="id_usuario" value="<?= $aluno->id ?>">
+                                <button type="submit" style="background: none; border: none; cursor: pointer;">
+                                    <span class="material-icons" style="color: red;">delete</span>
+                                </button>
+                            </form>
+                        </td>
                     </tr>
                     <?php endforeach; ?>
                 </tbody>
