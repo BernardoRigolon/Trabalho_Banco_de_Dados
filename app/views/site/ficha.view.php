@@ -11,7 +11,7 @@
     <div class="back">
         <div style="width: 100%; display: flex; justify-content: center; gap:2%; margin-top:50px;">
             <button type="submit" style="background-color: yellow; padding: 15px; cursor: pointer; font-size:30px;"><a href="/" style="text-decoration: none; color: black;">Alunos</a></button>
-            <button style="background-color: red; padding: 15px; cursor: pointer; font-size:30px;"><a href="/app/views/site/ficha.view.php" style="text-decoration: none; color: black;">Fichas</a></button>
+            <button style="background-color: red; padding: 15px; cursor: pointer; font-size:30px;"><a href="/ficha" style="text-decoration: none; color: black;">Fichas</a></button>
         </div>
         <h1 class="titulo">Gerenciamento de Fichas</h1>
         <div class="caixona">
@@ -24,24 +24,24 @@
                 <thead>
                     <tr class="th">
                         <th>ID Ficha</th>
-                        <th>ID Aluno</th>
-                        <th>Treino</th>
-                        <th>Nome do instrutor</th>
+                        <th>Nome Aluno</th>
+                        <th>Código instrutor</th>
                         <th>Data de Criação</th>
                         <th>Data de Validade</th>
                         <th>Gerenciar</th>
                     </tr>
                 </thead>
                 <tbody>
+                    <?php foreach ($fichas as $ficha): ?>
                     <tr class="tb">
-                        <td>1</td>
-                        <td>1</td>
-                        <td>A</td>
-                        <td>Toninho</td>
-                        <td>08/08/2025</td>
-                        <td>08/08/2026</td>
-                        <td><a href="/app/views/site/pvificha.view.php" style="text-decoration: none; color: black;" class="material-icons">settings</a></td>
+                        <td><?= $ficha->id_ficha ?> </td>
+                        <td><?= $ficha->nome_aluno ?></td>
+                        <td><?= $ficha->codigo_instrutor ?></td>
+                        <td><?= $ficha->data_criacao ?></td>
+                        <td><?= $ficha->data_validade ?></td>
+                        <td><a href="/fichaIndividual?id=<?= $ficha->id_ficha ?>" style="text-decoration: none; color: black;" class="material-icons">settings</a></td>
                     </tr>
+                    <?php endforeach; ?>
                 </tbody>
             </table>
         </div>

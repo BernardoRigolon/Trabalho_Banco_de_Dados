@@ -32,13 +32,64 @@ class QueryBuilder
     public function selectAlunosWithName()
     {
         $sql = "
-            SELECT a.*, u.nome AS user_nome
+            SELECT 
+                a.*, 
+                u.nome AS user_nome,
+                f.id_ficha AS id_ficha
             FROM aluno a
-            JOIN usuario u ON a.id = u.id_usuario
-            ORDER BY a.id DESC
+            JOIN usuario u 
+                ON a.id = u.id_usuario
+            LEFT JOIN ficha f 
+                ON f.id_aluno = a.id
+            ORDER BY a.id ASC
         ";
 
         try {
+            $stmt = $this->pdo->prepare($sql);
+            $stmt->execute();
+            return $stmt->fetchAll(PDO::FETCH_OBJ);
+        } catch (Exception $e) {
+            die($e->getMessage());
+        }
+    }
+
+    public function selectFichas(){
+        $sql = "SELECT f.*, u.nome AS nome_aluno, i.cod_func AS codigo_instrutor
+                FROM ficha f
+                JOIN usuario u ON f.id_aluno = u.id_usuario
+                JOIN instrutor i ON f.cod_instrutor = i.cod_func
+                ORDER BY f.data_criacao ASC
+        ";
+
+         try {
+            $stmt = $this->pdo->prepare($sql);
+            $stmt->execute();
+            return $stmt->fetchAll(PDO::FETCH_OBJ);
+        } catch (Exception $e) {
+            die($e->getMessage());
+        }
+    }
+
+    public function selectTreino($id){
+        $sql = "
+            SELECT 
+            u.nome AS nome_aluno,
+            f.id_ficha,
+            t.nome AS nome_treino,
+            e.nome AS nome_exercicio,
+            te.series,
+            te.repeticoes,
+            te.carga
+            FROM Ficha f
+            JOIN Usuario u ON u.id_usuario = f.id_aluno
+            JOIN Sessao_Treino stt ON stt.id_ficha = f.id_ficha
+            JOIN Treino t ON t.id_treino = stt.id_treino
+            JOIN Treino_Exercicio te ON te.id_treino = t.id_treino
+            JOIN Exercicio e ON e.id_exercicio = te.id_exercicio
+            WHERE f.id_ficha = {$id};
+        ";
+
+          try {
             $stmt = $this->pdo->prepare($sql);
             $stmt->execute();
             return $stmt->fetchAll(PDO::FETCH_OBJ);
