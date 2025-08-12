@@ -9,7 +9,7 @@
     <link rel="stylesheet" href="/app/views/site/home.css">
 </head>
 <body>
-    <div class="back">
+    <div class="back-home">
         <div style="width: 100%; display: flex; justify-content: center; gap:2%; margin-top:50px;">
             <button type="submit" style="background-color: yellow; padding: 15px; cursor: pointer; font-size:30px;"><a href="/" style="text-decoration: none; color: black;">Alunos</a></button>
             <button style="background-color: red; padding: 15px; cursor: pointer; font-size:30px;"><a href="/ficha" style="text-decoration: none; color: black;">Fichas</a></button>
@@ -29,7 +29,7 @@
                         <th>Objetivo</th>
                         <th>Visualizar Ficha</th>   <!--Ai leva para aquela página de gerenciamento de ficha, e não ter o id dela porque quem guarda é a ficha e não o aluno-->
                         <th>ID Dieta</th>
-                        <th>Gerenciar</th>
+                        <th>Editar</th>
                         <th>Excluir</th>
                     </tr>
                 </thead>

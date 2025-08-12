@@ -127,7 +127,6 @@ $fichaInfo = $treino[0];
             <button class="btn-save">
                 <a href="/">Voltar</a>
             </button>
-            <button class="btn-delete">Deletar</button>
         </div>
     </div>
 </body>
