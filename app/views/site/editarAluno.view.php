@@ -10,7 +10,7 @@
 </head>
 <body>
     <div class="back">
-        <h1 class="titulo">Editar Aluno</h1>
+        <h1 class="titulo" style="padding:1%;">Editar Aluno</h1>
         <div style="width: 80%; display: flex; justify-content: start; padding-bottom: 2%;">
         <h2><a href="/" style="text-decoration: none; color: white; display: flex;" class="material-icons">arrow_back</a></h2>
         </div>
@@ -35,8 +35,8 @@
                     <label class="subtitulo">Telefone</label>
                     <input class="input" type="tel" name="telefone" value="<?= htmlspecialchars($aluno['telefone']) ?>" />
 
-                    <div style="width: 100%; display: flex; justify-content: center; gap:2%;">
-                        <button type="submit" style="background-color: yellow; padding: 5px; cursor: pointer;">SALVAR</button>
+                    <div style="width: 100%; display: flex; justify-content: center; gap:2%; padding-top:20px;">
+                        <button type="submit" style="background-color: gray; padding: 15px; cursor: pointer; color:white; border-radius:20px; font-family: Arial, sans-serif;">SALVAR</button>
                     </div>
                 </form>
             </div>

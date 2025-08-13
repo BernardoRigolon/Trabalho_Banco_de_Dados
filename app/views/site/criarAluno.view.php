@@ -10,7 +10,7 @@
 </head>
 <body>
     <div class="back">
-        <h1 class="titulo">Criar Aluno</h1>
+        <h1 class="titulo" style="padding:1%;">Criar Aluno</h1>
         <div style="width: 80%; display: flex; justify-content: start; padding-bottom: 2%;">
         <h2><a href="/" style="text-decoration: none; color: white; display: flex;" class="material-icons">arrow_back</a></h2>
         </div>
@@ -32,8 +32,8 @@
                     <input class="input" placeholder="Ficha só pode ser criada pelo instrutor" type="number" name="ficha" disabled/>
                     <label class="subtitulo">ID Dieta</label>
                     <input class="input" placeholder="Dieta só pode ser criada pelo nutricionista" type="number" name="dieta" disabled/>
-                    <div style="width: 100%; display: flex; justify-content: center; gap:2%;">
-                        <button type="submit" style="background-color: yellow; padding: 5px; cursor: pointer;">CRIAR</button>
+                    <div style="width: 100%; display: flex; justify-content: center; gap:2%; padding-top:20px;">
+                        <button type="submit" style="background-color: gray; padding: 15px; cursor: pointer; color:white; border-radius:20px; font-family: Arial, sans-serif;">CRIAR</button>
                     </div>
                 </form>
             </div>

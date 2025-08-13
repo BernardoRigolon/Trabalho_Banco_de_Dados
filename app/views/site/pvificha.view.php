@@ -18,7 +18,7 @@ $fichaInfo = $treino[0];
             justify-content: center;
             align-items: center;
             height: 100vh;
-            background-color: green;
+            background-color: #8283B5;
         }
         .ficha-container {
             width: 90%;
@@ -42,14 +42,14 @@ $fichaInfo = $treino[0];
             margin-bottom: 30px;
         }
         .detalhe {
-            background: green;
+            background: lightgray;
             padding: 10px;
             border-radius: 8px;
         }
         table {
             width: 100%;
             border-collapse: collapse;
-            background: green;
+            background: lightgray;
             border-radius: 8px;
             overflow: hidden;
         }
@@ -58,11 +58,11 @@ $fichaInfo = $treino[0];
             text-align: center;
         }
         table th {
-            background: green;
+            background: lightgray;
             border-bottom: 2px solid black;
         }
         table tr:nth-child(even) {
-            background: #09a509ff;
+            background: lightgray;
         }
         .btns {
             margin-top: 20px;
@@ -71,15 +71,16 @@ $fichaInfo = $treino[0];
             justify-content: center;
         }
         .btns button {
-            padding: 10px 20px;
+            padding: 15px 20px;
             cursor: pointer;
             border: none;
             font-size: 16px;
-            border-radius: 5px;
+            border-radius: 20px;
         }
         .btn-save {
-            background: yellow;
-            color: black;
+            background: gray;
+            color: white;
+            text-decoration: none;
         }
         .btn-delete {
             background: red;
@@ -125,7 +126,7 @@ $fichaInfo = $treino[0];
 
         <div class="btns">
             <button class="btn-save">
-                <a href="/">Voltar</a>
+                <a href="/ficha" style="text-decoration: none; color:white;">Voltar</a>
             </button>
         </div>
     </div>

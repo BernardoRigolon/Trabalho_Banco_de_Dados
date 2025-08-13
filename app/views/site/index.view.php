@@ -10,20 +10,20 @@
 </head>
 <body>
     <div class="back-home">
-        <div style="width: 100%; display: flex; justify-content: center; gap:2%; margin-top:50px;">
-            <button style="background-color: yellow; padding: 15px; cursor: pointer; font-size:30px;"><a href="/" style="text-decoration: none; color: black;">Alunos</a></button>
-            <button style="background-color: red; padding: 15px; cursor: pointer; font-size:30px;"><a href="/ficha" style="text-decoration: none; color: black;">Fichas</a></button>
+        <div style="width: 80%; display: flex; justify-content: end; gap:2%; margin-top:50px;">
+            <button style="background-color: gray; border-radius:20px; padding: 15px; cursor: pointer; font-size:30px;"><a href="/" style="text-decoration: none; color: white;">Alunos</a></button>
+            <button style="background-color: black; border-radius:20px; padding: 15px; cursor: pointer; font-size:30px;"><a href="/ficha" style="text-decoration: none; color: white;">Fichas</a></button>
         </div>
         <h1 class="titulo">Gerenciamento de Alunos</h1>
         <div class="caixona">
         <div style="display: flex; width: 100%; justify-content:space-between; padding-bottom:2%">
         <form style="width: 30%; align-items:center; display:flex;" method="GET" action=""><input class="pesquisa" placeholder="Pesquisar" value="<?php if(array_key_exists('search',$_GET)){ echo $_GET['search']; } ?>" name="search"/><button type="submit" style="text-decoration: none; color: black; cursor: pointer;" class="material-icons">search</button></form>
-        <button type="submit" style="background-color: yellow; padding: 10px; cursor: pointer; font-size:20px; justify-self:end; display: flex;"><a href="/adicionarAluno" style="text-decoration: none; color: black;">Criar Aluno</a></button>
+        <button type="submit" style="background-color: light-gray; padding: 10px; cursor: pointer; font-size:20px; border-radius:20px; justify-self:end; display: flex;"><a href="/adicionarAluno" style="text-decoration: none; color: black;">Criar Aluno</a></button>
         </div>
         <div class="box">
             <table class="table">
                 <thead>
-                    <tr class="th">
+                    <tr class="the">
                         <th>ID Aluno</th>
                         <th>Nome</th>
                         <th>Objetivo</th>

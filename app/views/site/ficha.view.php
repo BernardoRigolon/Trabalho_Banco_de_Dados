@@ -9,9 +9,9 @@
 </head>
 <body>
     <div class="back-home">
-        <div style="width: 100%; display: flex; justify-content: center; gap:2%; margin-top:50px;">
-            <button type="submit" style="background-color: yellow; padding: 15px; cursor: pointer; font-size:30px;"><a href="/" style="text-decoration: none; color: black;">Alunos</a></button>
-            <button style="background-color: red; padding: 15px; cursor: pointer; font-size:30px;"><a href="/ficha" style="text-decoration: none; color: black;">Fichas</a></button>
+        <div style="width: 80%; display: flex; justify-content: end; gap:2%; margin-top:50px;">
+            <button style="background-color: gray; padding: 15px; cursor: pointer; font-size:30px; border-radius:20px;"><a href="/" style="text-decoration: none; color: white;">Alunos</a></button>
+            <button style="background-color: black; padding: 15px; cursor: pointer; font-size:30px; border-radius:20px;"><a href="/ficha" style="text-decoration: none; color: white;">Fichas</a></button>
         </div>
         <h1 class="titulo">Fichas Ativas</h1>
         <div class="caixona">
