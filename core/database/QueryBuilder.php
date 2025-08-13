@@ -185,21 +185,68 @@ class QueryBuilder
     }
 
     public function excluirUsuario($id)
-    {
-        try {
-            // Excluir dados dependentes primeiro (exemplo: aluno)
-            $sqlAluno = "DELETE FROM Aluno WHERE id = :id";
-            $stmtAluno = $this->pdo->prepare($sqlAluno);
-            $stmtAluno->execute(['id' => $id]);
+{
+    try {
+        $this->pdo->beginTransaction();
 
-            // Depois excluir usuário
-            $sqlUsuario = "DELETE FROM Usuario WHERE id_usuario = :id";
-            $stmtUsuario = $this->pdo->prepare($sqlUsuario);
-            $stmtUsuario->execute(['id' => $id]);
-        } catch (Exception $e) {
-            throw new Exception("Erro ao excluir usuário: " . $e->getMessage());
+        // 1. Verifica se é aluno
+        $stmtCheckAluno = $this->pdo->prepare("SELECT COUNT(*) FROM aluno WHERE id = :id");
+        $stmtCheckAluno->execute(['id' => $id]);
+        $isAluno = $stmtCheckAluno->fetchColumn();
+
+        if (!$isAluno) {
+            throw new Exception("Apenas alunos podem ser excluídos por esta função.");
         }
+
+        // 2. Verifica se é gerente (bloqueia a exclusão de usuário)
+        $stmtCheckGerente = $this->pdo->prepare("SELECT COUNT(*) FROM gerente WHERE cod_func = :id");
+        $stmtCheckGerente->execute(['id' => $id]);
+        $isGerente = $stmtCheckGerente->fetchColumn();
+
+        if ($isGerente) {
+            throw new Exception("Este usuário também é um gerente e não pode ser excluído por esta função.");
+        }
+
+        // 3. Verifica e exclui ficha (e relacionamentos)
+        $stmtFicha = $this->pdo->prepare("SELECT id_ficha FROM ficha WHERE id_aluno = :id");
+        $stmtFicha->execute(['id' => $id]);
+        $ficha = $stmtFicha->fetch(PDO::FETCH_OBJ);
+
+        if ($ficha) {
+            $stmtSessoes = $this->pdo->prepare("SELECT id_sessao FROM sessaotreino WHERE id_ficha = :id_ficha");
+            $stmtSessoes->execute(['id_ficha' => $ficha->id_ficha]);
+            $sessoes = $stmtSessoes->fetchAll(PDO::FETCH_OBJ);
+
+            foreach ($sessoes as $sessao) {
+                $stmtDelSessaoTreino = $this->pdo->prepare("DELETE FROM sessao_treino WHERE id_sessao = :id_sessao");
+                $stmtDelSessaoTreino->execute(['id_sessao' => $sessao->id_sessao]);
+            }
+
+            $stmtDelSessoes = $this->pdo->prepare("DELETE FROM sessaotreino WHERE id_ficha = :id_ficha");
+            $stmtDelSessoes->execute(['id_ficha' => $ficha->id_ficha]);
+
+            $stmtDelFicha = $this->pdo->prepare("DELETE FROM ficha WHERE id_ficha = :id_ficha");
+            $stmtDelFicha->execute(['id_ficha' => $ficha->id_ficha]);
+        }
+
+        // 4. Exclui dieta
+        $stmtDieta = $this->pdo->prepare("DELETE FROM dieta WHERE id_aluno = :id");
+        $stmtDieta->execute(['id' => $id]);
+
+        // 5. Exclui aluno
+        $stmtDelAluno = $this->pdo->prepare("DELETE FROM aluno WHERE id = :id");
+        $stmtDelAluno->execute(['id' => $id]);
+
+        // 6. Exclui usuário
+        $stmtDelUsuario = $this->pdo->prepare("DELETE FROM usuario WHERE id_usuario = :id");
+        $stmtDelUsuario->execute(['id' => $id]);
+
+        $this->pdo->commit();
+    } catch (Exception $e) {
+        $this->pdo->rollBack();
+        throw new Exception("Erro ao excluir usuário: " . $e->getMessage());
     }
+}
 
     public function selectAllSearch($table, array $param, $inicio = null, $contagem_linhas = null){
         $key=null;

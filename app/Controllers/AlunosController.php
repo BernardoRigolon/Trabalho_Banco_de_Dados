@@ -7,23 +7,20 @@ use Exception;
 
 class AlunosController
 {
-    public function index()
-    {
-        if(!array_key_exists('search',$_GET) || $_GET['search']===false || $_GET['search']===null || $_GET['search']==="")
-    {    $alunos = App::get('database')->selectAlunosWithName('aluno');       
-  }           
-   else{        
-     $nome = $_GET['search'];
-    $param = ['nome' => $nome];
-    $alunos = App::get('database')->selectAlunosComNomeSearch($param);
-   
-  }   
-        // Busca todos os alunos com o nome do instrutor
-        //$alunos = App::get('database')->selectAlunosWithName();
-
-        // Retorna a view passando os dados
-        return view('site/index', compact('alunos'));
+   public function index()
+{
+    if (!array_key_exists('search', $_GET) || empty($_GET['search'])) {
+        // Sem busca: traz todos os alunos
+        $alunos = App::get('database')->selectAlunosWithName();
+    } else {
+        // Com busca: traz alunos filtrados pelo nome
+        $param = ['nome' => $_GET['search']];
+        $alunos = App::get('database')->selectAlunosComNomeSearch($param);
     }
+
+    return view('site/index', compact('alunos'));
+}
+
 
     public function criarAluno() {
     $usuarioId = App::get('database')->criarUsuario([
