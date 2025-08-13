@@ -201,4 +201,54 @@ class QueryBuilder
         }
     }
 
+    public function selectAllSearch($table, array $param, $inicio = null, $contagem_linhas = null){
+        $key=null;
+        $value=null;
+        foreach($param as $keyB=>$valueB){
+              $key=$keyB;
+              $value=$valueB;
+        }
+        $sql ="SELECT * FROM {$table} WHERE $key LIKE ?";
+
+        if ($inicio >=0 && $contagem_linhas > 0) {
+            $sql .= " LIMIT {$inicio}, {$contagem_linhas}";
+        }
+
+        $titleValue='%'.$value.'%';
+        try{
+        $stmt = $this->pdo->prepare($sql);
+        $stmt->bindValue(1,$titleValue);
+        $stmt->execute();
+
+        return $stmt->fetchAll(\PDO::FETCH_CLASS);
+        }
+        catch (Exception $e) {
+            die($e->getMessage());
+           }
+    }
+
+    public function selectAlunosComNomeSearch($param)
+{
+    $sql = "SELECT 
+                a.*, 
+                u.nome AS user_nome,
+                f.id_ficha AS id_ficha
+            FROM aluno a
+            INNER JOIN usuario u ON a.id = u.id_usuario
+            LEFT JOIN ficha f ON f.id_aluno = a.id
+            WHERE u.nome LIKE :nome
+            ORDER BY a.id ASC";
+
+    $statement = $this->pdo->prepare($sql);
+    $statement->execute([
+        'nome' => '%' . $param['nome'] . '%'
+    ]);
+
+    return $statement->fetchAll(PDO::FETCH_OBJ);
+}
+
+
+
+
+
 }
