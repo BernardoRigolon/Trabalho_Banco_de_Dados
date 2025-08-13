@@ -16,7 +16,6 @@
         <h1 class="titulo">Fichas Ativas</h1>
         <div class="caixona">
         <div style="display: flex; width: 100%; justify-content:space-between; padding-bottom:2%">
-        <div style="width: 30%; align-items:center; display:flex;"><input class="pesquisa" placeholder="Pesquisar"/><button style="text-decoration: none; color: black; cursor: pointer;" class="material-icons">search</button></div>
         </div>
         <div class="box">
             <table class="table">
